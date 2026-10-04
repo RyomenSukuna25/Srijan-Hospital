@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="hero-section">
+  <div class="hero-glow hero-glow-a"></div>
+  <div class="hero-glow hero-glow-b"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal reveal-left">
+      <div class="eyebrow"><span></span> MULTISPECIALITY HEALTHCARE</div>
+      <h1>Care that feels <em>human.</em><br>Technology that moves <span>with you.</span></h1>
+      <p class="hero-lead">A modern hospital experience designed around clear clinical pathways, specialist access and confident next steps for every patient.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/appointment">Book an Appointment <span>↗</span></a>
+        <a class="btn btn-outline" href="/specialities">Explore Specialities <span>→</span></a>
+      </div>
+
+      <div class="hero-trust">
+        <div><strong>20</strong><span>speciality pathways</span></div>
+        <i></i>
+        <div><strong>12</strong><span>core service lines</span></div>
+        <i></i>
+        <div><strong>2</strong><span>featured clinicians</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal reveal-right">
+      <div class="hero-image-wrap">
+        <div class="hero-image-orbit orbit-one"></div>
+        <div class="hero-image-orbit orbit-two"></div>
+        <img src="{{page_image}}" alt="Srijan Hospital care environment" class="hero-image" data-parallax>
+        <div class="hero-floating-card card-top">
+          <span class="mini-icon">✚</span>
+          <div><strong>Patient-first care</strong><small>Designed around the next step</small></div>
+        </div>
+        <div class="hero-floating-card card-bottom">
+          <span class="live-dot"></span>
+          <div><strong>Care pathways</strong><small>Speciality · Diagnostics · Appointment</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hero-scroll">
+    <span>Scroll to explore</span><i></i>
+  </div>
+</section>
+
+<section class="quick-actions">
+  <div class="container quick-grid">
+    <a class="quick-card" href="/appointment">
+      <span class="quick-number">01</span><span class="quick-icon">↗</span>
+      <div><strong>Book an appointment</strong><small>Request a consultation</small></div><b>→</b>
+    </a>
+    <a class="quick-card" href="/specialities">
+      <span class="quick-number">02</span><span class="quick-icon">⌕</span>
+      <div><strong>Find a speciality</strong><small>Explore 20 care pathways</small></div><b>→</b>
+    </a>
+    <a class="quick-card" href="/diagnostics">
+      <span class="quick-number">03</span><span class="quick-icon">⌁</span>
+      <div><strong>Diagnostics</strong><small>Imaging and laboratory pathways</small></div><b>→</b>
+    </a>
+    <a class="quick-card quick-emergency" href="/emergency">
+      <span class="quick-number">04</span><span class="quick-icon">+</span>
+      <div><strong>Emergency care</strong><small>Urgent information and guidance</small></div><b>→</b>
+    </a>
+  </div>
+</section>
+
+<section class="stat-band">
+  <div class="container stat-grid">
+    <div class="stat"><strong data-count="20">0</strong><span>Speciality pathways</span></div>
+    <div class="stat"><strong data-count="12">0</strong><span>Core service lines</span></div>
+    <div class="stat"><strong data-count="2">0</strong><span>Featured clinicians</span></div>
+    <div class="stat stat-last"><strong>24/7</strong><span>Emergency-ready pathway</span></div>
+  </div>
+</section>
+
+<section class="section about-preview">
+  <div class="container split-grid">
+    <div class="reveal reveal-left">
+      <div class="eyebrow"><span></span> ABOUT SRIJAN</div>
+      <h2>A hospital experience built around <em>people.</em></h2>
+      <p class="section-lead">The Srijan concept puts important actions first: finding the right department, understanding services, meeting the clinical team and requesting an appointment.</p>
+      <a class="text-cta" href="/about">Discover the hospital <span>↗</span></a>
+    </div>
+    <div class="experience-card">
+
+    <div class="experience-content">
+
+        <div class="experience-label">
+            <span></span>
+            PATIENT-FIRST
+        </div>
+
+        <h3>
+            Less searching.<br>
+            <em>More confidence</em> about the next step.
+        </h3>
+
+        <p>
+            Information is organised into clear pathways rather than
+            making patients navigate a wall of content.
+        </p>
+
+    </div>
+
+</div>
+      <div class="experience-links">
+        <a href="/services"><span><b>Clinical services</b><small>Explore care options</small></span><strong>→</strong></a>
+        <a href="/doctors"><span><b>Meet our doctors</b><small>Two featured clinicians</small></span><strong>→</strong></a>
+        <a href="/insurance"><span><b>Insurance support</b><small>Understand the process</small></span><strong>→</strong></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div><div class="eyebrow"><span></span> WHAT WE OFFER</div><h2>Care across the <em>continuum.</em></h2></div>
+      <a class="text-cta" href="/services">View all services <span>→</span></a>
+    </div>
+    <div class="service-grid">
+      {% for s in services[:6] %}
+      <article class="service-card reveal" style="--delay:{{loop.index0 * 80}}ms">
+        <div class="service-top"><span>{{'%02d' % loop.index}}</span><i>↗</i></div>
+        <span class="service-tag">{{s[2]}}</span>
+        <h3>{{s[0]}}</h3>
+        <p>{{s[1]}}</p>
+        <a href="/appointment">Discuss your requirement <span>→</span></a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section speciality-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div><div class="eyebrow"><span></span> SPECIALITY PATHWAYS</div><h2>Find the right place to <em>start.</em></h2></div>
+      <a class="text-cta" href="/specialities">Explore all 20 <span>→</span></a>
+    </div>
+    <div class="speciality-grid">
+      {% for s in specialties[:8] %}
+      <a class="speciality-card reveal" href="/specialities/{{s[0]}}" style="--delay:{{loop.index0 * 70}}ms">
+        <div class="speciality-index">{{'%02d' % loop.index}}</div>
+        <div class="speciality-arrow">↗</div>
+        <h3>{{s[1]}}</h3>
+        <p>{{s[2]}}</p>
+        <span>View pathway <b>→</b></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section doctors-section">
+  <div class="container doctor-layout">
+    <div class="doctor-intro reveal reveal-left">
+      <div class="eyebrow"><span></span> OUR CLINICIANS</div>
+      <h2>Two doctors.<br><em>One connected experience.</em></h2>
+      <p class="section-lead">Fictional demonstration profiles for the Srijan Hospital prototype, showing how the final clinical experience can be presented.</p>
+      <a class="btn btn-primary" href="/doctors">Meet the doctors <span>→</span></a>
+    </div>
+    <div class="doctor-grid">
+      {% for d in doctors %}
+      <a class="doctor-card reveal" href="/doctors/{{d.slug}}" style="--delay:{{loop.index0 * 120}}ms">
+        <div class="doctor-image"><img src="{{d.image}}" alt="{{d.name}}"><span>View profile ↗</span></div>
+        <div class="doctor-info"><span>{{d.role}}</span><h3>{{d.name}}</h3><p>{{d.specialty}}</p></div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section faq-section">
+  <div class="container faq-layout">
+    <div class="reveal reveal-left">
+      <div class="eyebrow"><span></span> PATIENT INFORMATION</div>
+      <h2>Answers before<br><em>you arrive.</em></h2>
+      <p class="section-lead">A good hospital website should remove uncertainty before a patient reaches the front desk.</p>
+      <a class="text-cta" href="/patient-care">Patient care information <span>→</span></a>
+    </div>
+    <div class="faq-list reveal reveal-right">
+      <details open><summary>How do I request an appointment?<span>+</span></summary><p>Use the appointment form to send your preferred department, doctor and date. The enquiry is stored by the application for the hospital workflow.</p></details>
+      <details><summary>What if I am unsure which specialist I need?<span>+</span></summary><p>Start with the speciality directory or describe your requirement through the appointment enquiry so the workflow can route it appropriately.</p></details>
+      <details><summary>Where can I find diagnostics information?<span>+</span></summary><p>Use the dedicated Diagnostics pathway for imaging and laboratory information.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="cta-shape cta-shape-one"></div><div class="cta-shape cta-shape-two"></div>
+  <div class="container cta-content reveal">
+    <div><div class="eyebrow light"><span></span> YOUR NEXT STEP</div><h2>Start with the right <em>conversation.</em></h2><p>Tell us what you need and begin your appointment enquiry.</p></div>
+    <a class="btn btn-white" href="/appointment">Request an appointment <span>↗</span></a>
+  </div>
+</section>
+
+{% endblock %}

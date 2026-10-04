@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!-- Critical responsive viewport -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>{{ title|default(hospital) }} | {{ hospital }}</title>
+
+    <meta
+        name="description"
+        content="{{ hospital }} — {{ tagline }}."
+    >
+
+    <meta
+        name="theme-color"
+        content="#063b63"
+    >
+
+    <meta
+        name="format-detection"
+        content="telephone=no"
+    >
+
+    <link
+        rel="icon"
+        href="/static/images/logo.png"
+    >
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main stylesheet -->
+    <link
+        rel="stylesheet"
+        href="/static/css/styles.css?v=4"
+    >
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         SCROLL PROGRESS
+         ===================================================== -->
+
+    <div
+        class="scroll-progress"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         ACCESSIBILITY
+         ===================================================== -->
+
+    <a
+        class="skip"
+        href="#main"
+    >
+        Skip to content
+    </a>
+
+
+    <!-- =====================================================
+         SITE HEADER
+         ===================================================== -->
+
+    <header
+        class="site-header"
+        id="siteHeader"
+    >
+
+        <!-- =========================
+             TOP UTILITY BAR
+             ========================= -->
+
+        <div class="utility">
+
+            <div class="container utility-inner">
+
+                <div class="utility-left">
+
+                    <span class="utility-brand">
+                        {{ hospital }}
+                    </span>
+
+                    <span
+                        class="utility-dot"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span>
+                        {{ tagline }}
+                    </span>
+
+                </div>
+
+
+                <div class="utility-right">
+
+                    <a href="/emergency">
+                        <span
+                            class="status-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                        Emergency care
+                    </a>
+
+                    <a href="/contact">
+                        Appointments by enquiry
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             MAIN NAVIGATION
+             ========================= -->
+
+        <nav
+            class="main-nav"
+            aria-label="Primary navigation"
+        >
+
+            <div class="container nav-inner">
+
+                <!-- LOGO -->
+
+                <a
+                    class="brand"
+                    href="/"
+                    aria-label="{{ hospital }} home"
+                >
+
+                    <img
+                        src="/static/images/logo.png"
+                        alt="{{ hospital }} logo"
+                    >
+
+                </a>
+
+
+                <!-- MOBILE MENU BUTTON -->
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation"
+                    aria-expanded="false"
+                    aria-controls="primaryNav"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+
+                <!-- NAVIGATION PANEL -->
+
+                <div
+                    class="nav-panel"
+                    id="primaryNav"
+                >
+
+                    <div class="nav-links">
+
+                        <a href="/">
+                            Home
+                        </a>
+
+                        <a href="/about">
+                            About
+                        </a>
+
+                        <a href="/services">
+                            Services
+                        </a>
+
+
+                        <!-- SPECIALITIES DROPDOWN -->
+
+                        <div class="nav-dropdown">
+
+                            <button
+                                class="nav-dropdown-trigger"
+                                type="button"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                            >
+                                Specialities
+
+                                <span aria-hidden="true">
+                                    ⌄
+                                </span>
+                            </button>
+
+
+                            <div class="nav-dropdown-menu">
+
+                                {% for s in specialties[:8] %}
+
+                                <a href="/specialities/{{ s[0] }}">
+                                    {{ s[1] }}
+                                </a>
+
+                                {% endfor %}
+
+
+                                <a
+                                    class="dropdown-all"
+                                    href="/specialities"
+                                >
+                                    View all 20 specialities →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <a href="/doctors">
+                            Doctors
+                        </a>
+
+                        <a href="/diagnostics">
+                            Diagnostics
+                        </a>
+
+                        <a href="/blog">
+                            Insights
+                        </a>
+
+                        <a href="/contact">
+                            Contact
+                        </a>
+
+
+                        <!-- PRIMARY CTA -->
+
+                        <a
+                            class="nav-cta"
+                            href="/appointment"
+                        >
+
+                            <span>
+                                Book Appointment
+                            </span>
+
+                            <b aria-hidden="true">
+                                ↗
+                            </b>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main id="main">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <!-- =====================================================
+         FLOATING DESKTOP ACTIONS
+         ===================================================== -->
+
+    <div
+        class="floating-actions"
+        aria-label="Quick actions"
+    >
+
+        <a
+            class="floating emergency"
+            href="/emergency"
+            aria-label="Emergency care"
+            title="Emergency care"
+        >
+            <span aria-hidden="true">
+                +
+            </span>
+        </a>
+
+
+        <a
+            class="floating appointment"
+            href="/appointment"
+            aria-label="Book appointment"
+            title="Book appointment"
+        >
+            <span aria-hidden="true">
+                ↗
+            </span>
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOBILE BOTTOM ACTION BAR
+         ===================================================== -->
+
+    <nav
+        class="mobile-actionbar"
+        aria-label="Mobile quick actions"
+    >
+
+        <a
+            href="/specialities"
+            aria-label="Browse specialities"
+        >
+
+            <span aria-hidden="true">
+                ⌕
+            </span>
+
+            <small>
+                Specialities
+            </small>
+
+        </a>
+
+
+        <a
+            class="mobile-book"
+            href="/appointment"
+            aria-label="Book appointment"
+        >
+
+            <span aria-hidden="true">
+                ↗
+            </span>
+
+            <small>
+                Book now
+            </small>
+
+        </a>
+
+
+        <a
+            href="/emergency"
+            aria-label="Emergency care"
+        >
+
+            <span aria-hidden="true">
+                +
+            </span>
+
+            <small>
+                Emergency
+            </small>
+
+        </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-main">
+
+
+            <!-- =========================
+                 BRAND COLUMN
+                 ========================= -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="/static/images/logo.png"
+                    alt="{{ hospital }}"
+                >
+
+                <p class="footer-tagline">
+                    {{ tagline }}
+                </p>
+
+                <p>
+                    A patient-first hospital website concept
+                    focused on clear pathways, specialist care,
+                    diagnostics and easier access to the next step.
+                </p>
+
+                <a
+                    class="footer-link"
+                    href="/about"
+                >
+                    About Srijan
+                    <span aria-hidden="true">
+                        →
+                    </span>
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 EXPLORE
+                 ========================= -->
+
+            <div>
+
+                <h4>
+                    Explore
+                </h4>
+
+                <a href="/about">
+                    About
+                </a>
+
+                <a href="/services">
+                    Services
+                </a>
+
+                <a href="/specialities">
+                    Specialities
+                </a>
+
+                <a href="/doctors">
+                    Doctors
+                </a>
+
+                <a href="/diagnostics">
+                    Diagnostics
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 PATIENT CARE
+                 ========================= -->
+
+            <div>
+
+                <h4>
+                    Patient care
+                </h4>
+
+                <a href="/appointment">
+                    Book Appointment
+                </a>
+
+                <a href="/insurance">
+                    Insurance
+                </a>
+
+                <a href="/emergency">
+                    Emergency
+                </a>
+
+                <a href="/patient-care">
+                    Patient Care
+                </a>
+
+            </div>
+
+
+            <!-- =========================
+                 INFORMATION
+                 ========================= -->
+
+            <div>
+
+                <h4>
+                    Information
+                </h4>
+
+                <a href="/blog">
+                    Health Insights
+                </a>
+
+                <a href="/contact">
+                    Contact
+                </a>
+
+                <a href="/api/health">
+                    System Status
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             FOOTER BOTTOM
+             ========================= -->
+
+        <div class="container footer-bottom">
+
+            <span>
+                © 2026 Srijan Hospital — Demo build
+            </span>
+
+            <span>
+                Demo credentials and hospital-specific facts
+                to be confirmed before production.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script
+        src="/static/js/app.js?v=4"
+        defer
+    ></script>
+
+</body>
+</html>
