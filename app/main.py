@@ -5,9 +5,10 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import os
 
 BASE = Path(__file__).resolve().parent.parent
-DB = BASE / 'srijan.db'
+DB = os.path.join("/tmp", "srijan.db") 
 app = FastAPI(title='Srijan Hospital', docs_url='/api/docs', redoc_url='/api/redoc')
 app.mount('/static', StaticFiles(directory=BASE / 'srijan_static'), name='static')
 templates = Jinja2Templates(directory=BASE / 'app' / 'templates')
